@@ -1,0 +1,22 @@
+-- Exercise 3
+-- Query 2
+SELECT DISTINCT
+        mt1.subject, mt1.object, mt2.subject, mt2.object
+FROM
+        married_to as mt1,
+        married_to as mt2
+WHERE
+        mt1.subject = mt2.subject
+    and mt1.object != mt2.object
+    and mt1.subject
+;
+
+-- as SPARQL
+SELECT
+        ?s1, ?s2, ?s3, ?s4
+WHERE {
+        ?s1 married_to ?s2 .
+        ?s3 married_to ?s4 .
+        ?s1 married_to ?s3 .
+        ?s2 married_to ?s4
+}

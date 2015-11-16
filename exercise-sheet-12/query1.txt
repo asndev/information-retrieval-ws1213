@@ -1,0 +1,25 @@
+-- Exercise 3
+-- SQL Statements
+--
+-- Query 1
+SELECT DISTINCT
+        hw1.subject, hw2.subject, hw1.object
+FROM
+        has_won as hw1,
+        has_won as hw2,
+        married_to as mt
+WHERE
+        hw1.object = hw2.object
+    AND mt.subject = hw1.subject
+    AND mt.object = hw2.subject
+    AND hw1.subject
+;
+
+-- as SPARQL
+SELECT
+        ?s1, ?s2, ?o1
+WHERE {
+        ?s1 has_won ?o1 .
+        ?s2 has_won ?o1 .
+        ?s1 married_to ?s2 .
+}
